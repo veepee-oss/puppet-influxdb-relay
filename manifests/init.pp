@@ -27,8 +27,8 @@ class influxdbrelay (
   # Dependencies management.
   if $backports != '' {
     package { $deps:
-      ensure  => $ensure,
-      install_options => [ '-t', "${backports}" ]
+      ensure          => $ensure,
+      install_options => [ '-t', $backports ]
     }
   } else {
     package { $deps:
