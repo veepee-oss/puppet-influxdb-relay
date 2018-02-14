@@ -35,15 +35,6 @@ platforms:
     driver_config:
       image: vpgrp/puppet:centos-7
       command: /sbin/init
-  # Debian 8
-  - name: debian-8
-    driver_config:
-      image: vpgrp/puppet:debian-8
-      command: /bin/systemd
-  - name: debian-8-bpo
-    driver_config:
-      image: vpgrp/puppet:debian-8.bpo
-      command: /bin/systemd
   # Debian 9
   - name: debian-9
     driver_config:
@@ -80,8 +71,6 @@ suites:
     provisioner:
       manifest: debian/init.pp
     includes:
-      - debian-8
-      - debian-8-bpo
       - debian-9
       - debian-9-bpo
       - debian-10
