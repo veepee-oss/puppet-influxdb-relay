@@ -5,7 +5,14 @@ exec { 'apt-get update':
   path    => [ '/usr/bin', '/usr/sbin', '/bin', '/sbin' ],
 }
 
-class { 'influxdbrelay':
-  require => Exec[ 'apt-get update' ]
+if $lsbdistcodename == 'jessie' {
+  class { 'influxdbrelay':
+    require   => Exec[ 'apt-get update' ],
+    backports => 'jessie-backports'
+  }
+} else {
+  class { 'influxdbrelay':
+    require => Exec[ 'apt-get update' ]
+  }
 }
 # EOF

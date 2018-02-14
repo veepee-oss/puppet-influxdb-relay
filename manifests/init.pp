@@ -6,6 +6,7 @@ class influxdbrelay (
   $service_prvd   = 'systemd',
   $enable         = $influxdbrelay::params::enable,
   $service        = $influxdbrelay::params::service,
+  $backports      = '',
   $deps           = $influxdbrelay::params::deps,
   $gopath         = $influxdbrelay::params::gopath,
   $dirs           = $influxdbrelay::params::dirs,
@@ -24,8 +25,15 @@ class influxdbrelay (
 ) inherits influxdbrelay::params {
 
   # Dependencies management.
-  package { $deps:
-    ensure => $ensure
+  if $backports != '' {
+    package { $deps:
+      ensure  => $ensure,
+      install_options => [ '-t', "${backports}" ]
+    }
+  } else {
+    package { $deps:
+      ensure  => $ensure
+    }
   }
 
   -> file { 'gopath':

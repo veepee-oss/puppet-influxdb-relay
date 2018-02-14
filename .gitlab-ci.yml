@@ -71,6 +71,13 @@ centos-7:
   script:
     - kitchen test --destroy=always --color centos-centos-7
 
+# go 1.5 is only in bpo for jessie
+debian-8:
+  stage: test-debian
+  image: vpgrp/kitchen
+  script:
+    - kitchen test --destroy=always --color debian-debian-8-bpo
+
 debian-9:
   stage: test-debian
   image: vpgrp/kitchen
@@ -93,17 +100,17 @@ ubuntu-16.04:
     - kitchen test --destroy=always --color ubuntu-ubuntu-16-04
 
 # create module
-#create-module:
-#  stage: module
-#  image: vpgrp/puppet
-#  script:
-#    - puppet module build
+create-module:
+  stage: module
+  image: vpgrp/puppet
+  script:
+    - puppet module build
 
-#publish-module:
-#  stage: module
-#  only:
-#    - master
-#  image: vpgrp/puppet
-#  script:
-#    - rake module:push
+publish-module:
+  stage: module
+  only:
+    - master
+  image: vpgrp/puppet
+  script:
+    - rake module:push
 # EOF
