@@ -26,7 +26,7 @@ class influxdbrelay (
   # Dependencies management.
   package { $deps:
     ensure => $ensure
-  }
+  } ->
 
   file { 'gopath':
     ensure => 'directory',
