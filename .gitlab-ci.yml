@@ -1,0 +1,115 @@
+---
+# https://docs.gitlab.com/ee/ci/docker/using_docker_build.html
+
+stages:
+  - commit
+  - syntax
+  - test-centos
+  - test-debian
+  - test-ubuntu
+  - module
+
+# commit
+git-history:
+  stage: commit
+  script:
+    - >
+      bash <(curl -s
+      https://gitlab.com/yue-script/checks/raw/master/check_git_history.sh)
+
+lines-length:
+  stage: commit
+  script:
+    - >
+      bash <(curl -s
+      https://gitlab.com/yue-script/checks/raw/master/check_lines_length.sh)
+      80 templates/* files/*
+
+# syntax
+erb-lint:
+  stage: syntax
+  image: vpgrp/linter:puppet
+  script:
+    - rails-erb-lint check --path=templates
+
+json-lint:
+  stage: syntax
+  image: vpgrp/linter:puppet
+  script:
+    - metadata-json-lint metadata.json
+
+markdown-lint:
+  stage: syntax
+  image: vpgrp/linter:markdown
+  script:
+    - markdown-lint --rules '~MD029' README.md
+
+puppet-lint:
+  stage: syntax
+  image: vpgrp/linter:puppet
+  script:
+    - puppet-lint --fail-on-warnings .
+
+rubocop:
+  stage: syntax
+  image: vpgrp/linter:ruby
+  script:
+    - rubocop .
+
+yaml-lint:
+  stage: syntax
+  image: vpgrp/linter:yaml
+  script:
+    - yaml-lint .gitlab-ci.yml
+    - yaml-lint .kitchen.yml
+    - yaml-lint .puppetforge.yml
+
+# puppet
+centos-7:
+  stage: test-centos
+  image: vpgrp/kitchen
+  script:
+    - kitchen test --destroy=always --color centos-centos-7
+
+debian-8:
+  stage: test-debian
+  image: vpgrp/kitchen
+  script:
+    - kitchen test --destroy=always --color debian-debian-8
+    - kitchen test --destroy=always --color debian-debian-8-bpo
+
+debian-9:
+  stage: test-debian
+  image: vpgrp/kitchen
+  script:
+    - kitchen test --destroy=always --color debian-debian-9
+    - kitchen test --destroy=always --color debian-debian-9-bpo
+
+debian-10:
+  stage: test-debian
+  image: vpgrp/kitchen
+  script:
+    - kitchen test --destroy=always --color debian-debian-10
+    - kitchen test --destroy=always --color debian-debian-10-bpo
+
+ubuntu-16.04:
+  stage: test-ubuntu
+  image: vpgrp/kitchen
+  script:
+    - kitchen test --destroy=always --color ubuntu-ubuntu-16-04
+
+# create module
+#create-module:
+#  stage: module
+#  image: vpgrp/puppet
+#  script:
+#    - puppet module build
+
+#publish-module:
+#  stage: module
+#  only:
+#    - master
+#  image: vpgrp/puppet
+#  script:
+#    - rake module:push
+# EOF

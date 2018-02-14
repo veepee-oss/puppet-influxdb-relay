@@ -1,0 +1,5 @@
+# -*- puppet -*-
+
+class { 'influxdbrelay':
+}
+# EOF
