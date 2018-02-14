@@ -6,7 +6,7 @@ class influxdbrelay (
   $service_prvd   = 'systemd',
   $enable         = $influxdbrelay::params::enable,
   $service        = $influxdbrelay::params::service,
-  $deps           = $influxdbrelay::params::deps
+  $deps           = $influxdbrelay::params::deps,
   $gopath         = $influxdbrelay::params::gopath,
   $dirs           = $influxdbrelay::params::dirs,
   $http_name      = $influxdbrelay::params::http_name,
