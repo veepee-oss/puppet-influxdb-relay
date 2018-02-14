@@ -36,7 +36,9 @@ class influxdbrelay (
     }
   }
 
-  -> file { 'gopath':
+  Package <| |> -> Exec['go_get_relay']
+
+  file { 'gopath':
     ensure => 'directory',
     path   => $gopath,
     owner  => 'root',
