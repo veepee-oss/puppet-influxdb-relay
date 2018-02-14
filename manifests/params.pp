@@ -6,6 +6,10 @@ class influxdbrelay::params {
   $service_ensure = 'running'
   $enable = true
   $service = 'influxdb-relay'
+  $deps = [
+    'golang',
+    'git'
+  ]
   $gopath = '/opt/go'
   $dirs = [
     '/var/lib/influxdb-relay',

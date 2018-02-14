@@ -6,6 +6,7 @@ class influxdbrelay (
   $service_prvd   = 'systemd',
   $enable         = $influxdbrelay::params::enable,
   $service        = $influxdbrelay::params::service,
+  $deps           = $influxdbrelay::params::deps
   $gopath         = $influxdbrelay::params::gopath,
   $dirs           = $influxdbrelay::params::dirs,
   $http_name      = $influxdbrelay::params::http_name,
@@ -23,15 +24,8 @@ class influxdbrelay (
 ) inherits influxdbrelay::params {
 
   # Dependencies management.
-  if ! defined (Package['golang']) {
-    package { 'golang':
-      ensure => $ensure
-    }
-  }
-  if ! defined (Package['git']) {
-    package { 'git':
-      ensure => $ensure
-    }
+  package { $deps:
+    ensure => $ensure
   }
 
   file { 'gopath':
