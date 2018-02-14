@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "author": "rdelaplace",
   "summary": "Puppet module to install, deploy and configure InfluxDB relay.",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "source": "https://git.vpgrp.io/puppet/puppet-influxdbrelay",
   "project_page": "https://git.vpgrp.io/puppet/puppet-influxdbrelay",
   "issues_url": "https://git.vpgrp.io/puppet/puppet-influxdbrelay/issues",
@@ -26,7 +26,7 @@
       "operatingsystemrelease": [ "7" ]
     }
   ],
-  "tags": [ "template" ],
+  "tags": [ "influxdb", "influxdb-relay" ],
   "requirements": [
     { "name": "puppet", "version_requirement": ">=2.7.0 <5.0.0" }
   ]

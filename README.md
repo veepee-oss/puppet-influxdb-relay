@@ -14,8 +14,7 @@ This project adds a basic high availability layer to InfluxDB.
 With the right architecture  and  disaster recovery processes,  this achieves a
 highly available setup.
 
-[github.com/influxdata]
-(https://github.com/influxdata/influxdb-relay#description)
+[influxdb-relay](https://github.com/influxdata/influxdb-relay#description)
 
 ## Description
 
@@ -64,8 +63,7 @@ influxdb-relay requires golang version 1.5 or newer.
 
 ## Development
 
-Please read carefully [CONTRIBUTING.md]
-(https://git.vpgrp.io/ansible/puppet-rules/raw/master/CONTRIBUTING.md)
+Please read carefully [CONTRIBUTING.md](CONTRIBUTING.md)
 before making a merge request.
 
 ```
