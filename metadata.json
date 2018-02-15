@@ -28,6 +28,6 @@
   ],
   "tags": [ "influxdb", "influxdb-relay" ],
   "requirements": [
-    { "name": "puppet", "version_requirement": ">=2.7.0 <5.0.0" }
+    { "name": "puppet", "version_requirement": ">= 2.7.0 < 6.0.0" }
   ]
 }

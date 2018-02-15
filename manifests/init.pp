@@ -56,13 +56,12 @@ class influxdbrelay (
     content => inline_template("GOPATH=${gopath}"),
     notify  => [
       Exec['go_get_relay'],
-      File['install_relay']
+      File['/usr/lib/influxdb-relay']
     ]
   }
 
-  file { 'install_relay':
+  file { '/usr/lib/influxdb-relay':
     ensure => 'link',
-    path   => '/usr/lib/influxdb-relay',
     target => "${gopath}/src/github.com/influxdata/influxdb-relay/",
     notify => File['/etc/influxdb-relay/influxdb-relay.conf']
   }
@@ -81,22 +80,20 @@ class influxdbrelay (
       '/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin',
     command   => 'bash /usr/lib/influxdb-relay/scripts/post-install.sh',
     notify    => [
-      File['link_binary'],
-      File['logrotate']
+      File['/usr/bin/influxdb-relay'],
+      File['/etc/logrotate.d/influxdb-relay']
     ],
-    subscribe => File['install_relay'],
+    subscribe => File['/usr/lib/influxdb-relay'],
     unless    => 'id influxdb-relay'
   }
 
-  file { 'link_binary':
+  file { '/usr/bin/influxdb-relay':
     ensure => 'link',
-    path   => '/usr/bin/influxdb-relay',
     target => "${gopath}/bin/influxdb-relay"
   }
 
-  file { 'logrotate':
+  file { '/etc/logrotate.d/influxdb-relay':
     ensure => 'link',
-    path   => '/etc/logrotate.d/influxdb-relay',
     target =>
       "${gopath}/src/github.com/influxdata/influxdb-relay/scripts/logrotate"
   }
