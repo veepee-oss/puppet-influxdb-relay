@@ -27,15 +27,15 @@ class influxdbrelay::params {
     {
       'name'    => 'local1',
       'schema'  => 'http',
-      'ip'      => '127.0.0.1',
-      'port'    => '8089',
+      'host'    => '127.0.0.1',
+      'port'    => '8086',
       'timeout' => '10s'
     },
     {
-      'name'    => 'local1',
+      'name'    => 'local2',
       'schema'  => 'http',
-      'ip'      => '127.0.0.1',
-      'port'    => '8089',
+      'host'    => '127.0.0.1',
+      'port'    => '7086',
       'timeout' => '10s'
     }
   ]
@@ -47,13 +47,13 @@ class influxdbrelay::params {
   $udp_outputs    = [
     {
       'name' => 'local1',
-      'ip'   => '127.0.0.1',
+      'host' => '127.0.0.1',
       'port' => '8089',
       'mtu'  => '512'
     },
     {
       'name' => 'local2',
-      'ip'   => '127.0.0.1',
+      'host' => '127.0.0.1',
       'port' => '7089',
       'mtu'  => '1024'
     }

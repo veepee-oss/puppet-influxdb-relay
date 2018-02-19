@@ -1,6 +1,6 @@
 {
   "name": "vpgrp-influxdbrelay",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "rdelaplace",
   "summary": "Puppet module to install, deploy and configure InfluxDB relay.",
   "license": "Apache-2.0",

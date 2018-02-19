@@ -11,7 +11,7 @@ ssl-combined-pem = "<%= @ssl_cert %>"
 <% end -%>
 output = [
 <% @http_outputs.each do |o| -%>
-  { name = "<%= o['name'] %>", location = "<%= o['schema'] %>://<%= o['ip'] %>:<%= o['port'] %>/write", timeout = "<%= o['timeout'] %>" },
+  { name = "<%= o['name'] %>", location = "<%= o['schema'] %>://<%= o['host'] %>:<%= o['port'] %>/write", timeout = "<%= o['timeout'] %>" },
 <% end -%>
 ]
 
@@ -23,7 +23,7 @@ read-buffer = <%= @udp_readbuffer %>
 precision = "<%= @udp_precision %>"
 output = [
 <% @udp_outputs.each do |o| -%>
-  { name = "<%= o['name'] %>", location = "<%= o['ip'] %>:<%= o['port'] %>", mtu = <%= o['mtu'] %> },
+  { name = "<%= o['name'] %>", location = "<%= o['host'] %>:<%= o['port'] %>", mtu = <%= o['mtu'] %> },
 <% end -%>
 ]
 
