@@ -5,7 +5,7 @@ require 'spec_helper'
 root_dirs = [
   '/opt/go',
   '/etc/influxdb-relay',
-  '/opt/go/src/github.com/influxdata/influxdb-relay/'
+  '/opt/go/src/github.com/vente-privee/influxdb-relay/'
 ]
 
 influx_dirs = [
