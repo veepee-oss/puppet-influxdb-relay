@@ -42,6 +42,7 @@ platforms:
   - name: debian-8-bpo
     driver_config:
       image: vpgrp/puppet:debian-8.bpo
+      command: /bin/systemd
   # Debian 9
   - name: debian-9
     driver_config:
