@@ -1,4 +1,6 @@
-# puppet-influxdbrelay ![License][license-img]
+# puppet-influxdbrelay
+
+[![License][license-img]][license-href]
 
 1. [Overview](#overview)
 2. [Description](#module-description)
@@ -10,19 +12,23 @@
 
 ## Overview
 
-This project adds a basic high availability layer to InfluxDB.
-With the right architecture  and  disaster recovery processes,  this achieves a
-highly available setup.
+This project adds a basic high  availability layer to InfluxDB.  With the right
+architecture and disaster recovery processes,  this achieves a highly available
+setup.
 
-[influxdb-relay](https://github.com/influxdata/influxdb-relay#description)
+[influxdb-relay][overview-href]
 
 ## Description
 
-This module enables you to install, deploy, and configure influxdbrelay.
+This module enables you to install, deploy, and configure InfluxDB Relay.
 
 ## Setup
 
 Copy this module in your modules folder without *puppet-* in the name.
+
+```bash
+puppet module install vpgrp-influxdbrelay
+```
 
 ## Usage
 
@@ -59,12 +65,12 @@ class { 'influxdbrelay':
 
 ## Limitations
 
-influxdb-relay requires golang version 1.5 or newer.
+InfluxDB Relay requires Golang version 1.5 or newer.
 
 ## Development
 
-Please read carefully [CONTRIBUTING.md](CONTRIBUTING.md)
-before making a merge request.
+Please read carefully [CONTRIBUTING.md][contribute-href]  before making a merge
+request.
 
 ```
     ╚⊙ ⊙╝
@@ -77,3 +83,6 @@ before making a merge request.
 ```
 
 [license-img]: https://img.shields.io/badge/license-Apache-blue.svg
+[license-href]: LICENSE
+[overview-href]: https://github.com/vente-privee/influxdb-relay
+[contribute-href]: CONTRIBUTING.md

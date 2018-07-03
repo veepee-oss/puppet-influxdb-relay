@@ -1,12 +1,12 @@
 {
   "name": "vpgrp-influxdbrelay",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "author": "rdelaplace",
-  "summary": "Puppet module to install, deploy and configure InfluxDB relay.",
+  "summary": "Puppet module to install, deploy and configure InfluxDB Relay.",
   "license": "Apache-2.0",
-  "source": "https://git.vpgrp.io/puppet/puppet-influxdbrelay",
-  "project_page": "https://git.vpgrp.io/puppet/puppet-influxdbrelay",
-  "issues_url": "https://git.vpgrp.io/puppet/puppet-influxdbrelay/issues",
+  "source": "https://github.com/vente-privee/puppet-influxdbrelay",
+  "project_page": "https://github.com/vente-privee/puppet-influxdbrelay",
+  "issues_url": "https://github.com/vente-privee/puppet-influxdbrelay/issues",
   "dependencies": [],
   "operatingsystem_support": [
     {
@@ -15,7 +15,7 @@
     },
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [ "16.04" ]
+      "operatingsystemrelease": [ "16.04", "18.04" ]
     },
     {
       "operatingsystem": "RedHat",
@@ -26,8 +26,8 @@
       "operatingsystemrelease": [ "7" ]
     }
   ],
-  "tags": [ "influxdb", "influxdb-relay" ],
+  "tags": [ "influxdb", "influxdb-relay", "monitoring", "tsdb" ],
   "requirements": [
-    { "name": "puppet", "version_requirement": ">= 2.7.0 < 6.0.0" }
+    { "name": "puppet", "version_requirement": ">= 4.0.0 < 7.0.0" }
   ]
 }

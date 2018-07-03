@@ -62,7 +62,7 @@ class influxdbrelay (
 
   file { '/usr/lib/influxdb-relay':
     ensure => 'link',
-    target => "${gopath}/src/github.com/influxdata/influxdb-relay/",
+    target => "${gopath}/src/github.com/vente-privee/influxdb-relay/",
     notify => File['/etc/influxdb-relay/influxdb-relay.conf']
   }
 
@@ -70,9 +70,10 @@ class influxdbrelay (
     path        =>
       '/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin',
     environment => "GOPATH=${gopath}",
-    command     => 'go get -u github.com/influxdata/influxdb-relay',
+    command     => 'go get -u github.com/vente-privee/influxdb-relay',
     notify      => Exec['post-install'],
-    unless      => "test -d ${gopath}/src/github.com/influxdata/influxdb-relay"
+    unless      =>
+      "test -d ${gopath}/src/github.com/vente-privee/influxdb-relay"
   }
 
   exec { 'post-install':
@@ -95,7 +96,7 @@ class influxdbrelay (
   file { '/etc/logrotate.d/influxdb-relay':
     ensure => 'link',
     target =>
-      "${gopath}/src/github.com/influxdata/influxdb-relay/scripts/logrotate"
+      "${gopath}/src/github.com/vente-privee/influxdb-relay/scripts/logrotate"
   }
 
   file { '/etc/influxdb-relay/influxdb-relay.conf':
