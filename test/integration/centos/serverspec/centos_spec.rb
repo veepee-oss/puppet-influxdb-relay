@@ -1,6 +1,8 @@
-# -*- Ruby -*-
+# -*- rxsuby -*-
 
-require 'spec_helper'
+require 'serverspec'
+
+set :backend, :exec
 
 root_dirs = [
   '/opt/go',
@@ -75,9 +77,10 @@ describe 'Files' do
   end
 end
 
-describe 'Service' do
-  describe service('influxdb-relay') do
-    it { should be_enabled }
-    it { should be_running }
-  end
-end
+# describe 'Service' do
+#   describe service('influxdb-relay') do
+#     it { should be_enabled }
+#     it { should be_running }
+#   end
+# end
+# EOF
