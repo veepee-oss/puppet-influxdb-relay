@@ -49,7 +49,8 @@ class influxdbrelay (
 
   file { $dirs:
     ensure => 'directory',
-    mode   => '0755'
+    mode   => '0755',
+    before => Exec['post-install'],
   }
 
   file { '/etc/environment':
