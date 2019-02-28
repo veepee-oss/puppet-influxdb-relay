@@ -6,7 +6,7 @@
 
 name = "<%= @http_name %>"
 bind-addr = "<%= @http_bind_addr %>:<%= @http_bind_port %>"
-health-timeout-ms = "<%= @health_timeout_ms %>"
+health-timeout-ms = "<%= @http_health_timeout_ms %>"
 <% if @ssl == true then -%>
 ssl-combined-pem = "<%= @ssl_cert %>"
 <% end -%>
