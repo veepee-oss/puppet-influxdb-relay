@@ -80,7 +80,7 @@ create-module:
 publish-module:
   stage: module
   only:
-    - master
+    - tags
   image: vpgrp/puppet
   script:
     - rake module:push
